@@ -151,11 +151,11 @@ The hero at the top is the chat case.
 
 More pairs, including email and an over-correction to avoid, are in [`references/examples.md`](references/examples.md).
 
-## What this is not
+## Limits
 
-- **Not a detector bypass.** In the same paper, a fine-tuned classifier on raw text still separated human from AI at 99.9%. Structure is one layer of many. This is about writing better, not hiding anything.
-- **Not settled science for non-fiction.** The evidence comes from short fiction. The non-fiction rules apply the same defaults by analogy.
-- **Not free of the paper's caveats.** StoryScope generated AI stories from premises reverse-engineered out of the human stories. A 120-word premise that states the theme and keeps one conflict probably inflates rules 1, 4 and 6. The human side is published, edited anthology fiction spanning decades, compared against single-pass drafts. The diversity gap compares 10,272 authors with five models. The skill leans on the findings that survive those caveats best: named references, plain emotion labels, open endings.
+It won't get text past a detector. In the same paper, a fine-tuned classifier on raw text still separated human from AI at 99.9%; structure is one layer of many.
+
+The paper has caveats of its own. StoryScope generated AI stories from premises reverse-engineered out of the human stories, and a 120-word premise that states the theme and keeps one conflict probably inflates rules 1, 4 and 6. The human side is published, edited anthology fiction spanning decades, set against single-pass drafts, and the diversity gap compares 10,272 authors with five models. The skill leans hardest on the findings those caveats touch least: named references, plain emotion labels, open endings.
 
 ## Credits
 
