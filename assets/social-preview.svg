@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+<style>
+        .title{font:700 96px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ecebe6;letter-spacing:-.02em}
+        .tag{font:32px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#8f8b82}
+        .m{font:28px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
+        .bad{fill:#e2805f} .good{fill:#6fc2a8} .arrow{fill:#8f8b82}
+        .foot{font:22px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#8f8b82}
+        </style>
+<rect width="1280" height="640" fill="#151514"/>
+<text x="96" y="178" class="title">humanizing</text>
+<text x="96" y="238" class="tag">Structural AI-writing fixes that word lists miss.</text>
+<text x="96" y="352" class="m"><tspan class="bad">moral at the end</tspan><tspan class="arrow">  →  </tspan><tspan class="good">end on the fact</tspan></text>
+<text x="96" y="402" class="m"><tspan class="bad">discovery order</tspan><tspan class="arrow">  →  </tspan><tspan class="good">conclusion first</tspan></text>
+<text x="96" y="452" class="m"><tspan class="bad">vague allusion</tspan><tspan class="arrow">  →  </tspan><tspan class="good">name the thing</tspan></text>
+<text x="96" y="502" class="m"><tspan class="bad">everything resolved</tspan><tspan class="arrow">  →  </tspan><tspan class="good">say what is open</tspan></text>
+<text x="96" y="584" class="foot">Agent skill · grounded in StoryScope (COLM 2026)</text>
+</svg>

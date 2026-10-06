@@ -1,0 +1,2 @@
+scripts/** linguist-documentation
+*.md linguist-detectable
