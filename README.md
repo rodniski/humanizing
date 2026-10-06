@@ -58,8 +58,10 @@ The skill triggers on its own when an agent writes or reviews long prose, or whe
 
 ## Before and after
 
+The hero at the top is the chat case.
+
 <details>
-<summary><b>Chat answer</b>: discovery order, vague allusion, moral at the end</summary>
+<summary>Its text</summary>
 
 ```diff
 - I looked into the login timeouts. First I checked the application logs, then
@@ -73,8 +75,15 @@ The skill triggers on its own when an agent writes or reviews long prose, or whe
 ```
 </details>
 
+### PR description
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/pr-dark.svg">
+  <img alt="A templated PR description with its tells highlighted, then a rewrite that leads with the cause." src="assets/pr-light.svg" width="880">
+</picture>
+
 <details>
-<summary><b>PR description</b>: template symmetry, no specifics</summary>
+<summary>Text</summary>
 
 ```diff
 - ## Summary
@@ -94,8 +103,37 @@ The skill triggers on its own when an agent writes or reviews long prose, or whe
 ```
 </details>
 
+### Documentation
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/docs-dark.svg">
+  <img alt="A documentation intro with preamble and promised takeaway highlighted, then a rewrite that answers first." src="assets/docs-light.svg" width="880">
+</picture>
+
 <details>
-<summary><b>Fiction</b>: stated theme, tightening chest, linear time</summary>
+<summary>Text</summary>
+
+```diff
+- Authentication is a crucial part of any modern application. In this guide,
+- we will walk through the process of setting up authentication step by step.
+- First, we will install the dependencies. Then, we will configure the
+- provider. Finally, we will test the login flow. By the end, you will have a
+- solid understanding of how authentication works.
++ To add login, install auth-kit, set AUTH_ISSUER and AUTH_CLIENT_ID, and call
++ requireUser() in any loader that needs a session. The rest of this page
++ covers the provider settings and what to do when the callback fails.
+```
+</details>
+
+### Fiction
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/fiction-dark.svg">
+  <img alt="A short fiction passage with a stated theme highlighted, then a rewrite with named emotion, specifics and a time jump." src="assets/fiction-light.svg" width="880">
+</picture>
+
+<details>
+<summary>Text</summary>
 
 ```diff
 - Maria stood at the edge of the pier as the sun sank low. Her chest tightened
@@ -111,7 +149,7 @@ The skill triggers on its own when an agent writes or reviews long prose, or whe
 ```
 </details>
 
-More pairs, including email, docs and an over-correction to avoid, are in [`references/examples.md`](references/examples.md).
+More pairs, including email and an over-correction to avoid, are in [`references/examples.md`](references/examples.md).
 
 ## What this is not
 

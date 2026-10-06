@@ -26,34 +26,114 @@ MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
 SANS = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
 
 
-# Hero: a clean-at-the-word-level AI answer with its three structural tells
-# marked, then the restructured version. Each line is a list of
-# (text, css class) runs; "sup:N" renders a small marker.
+# Before/after cards: the hero plus one per README example. Each card is a
+# clean-at-the-word-level AI text with its three structural tells marked,
+# then the restructured version. Lines are lists of (text, css class) runs;
+# "sup:N" renders a small marker.
 #
 # Every element is visible in the base styles. The animation only recolors
 # (tells light up in sequence, then the fixes), so a renderer that freezes
 # at t=0 or ignores CSS animation still shows the full text.
-BEFORE = [
-    [("I looked into the login timeouts. ", ""), ("First I checked the logs,", "t1")],
-    [("then the load balancer, then the connection pool.", "t1"), ("sup:1", "t1"),
-     (" As experienced", "t2")],
-    [("engineers often say, it's usually the simplest thing.", "t2"), ("sup:2", "t2"),
-     (" In the end,", "")],
-    [("it was the pool size. ", ""), ("Ultimately, this shows how small details", "t3")],
-    [("can have a big impact on reliability.", "t3"), ("sup:3", "t3")],
-]
-AFTER = [
-    [("Login times out because the DB pool caps at 10.", "f1"), ("sup:1", "f1")],
-    [("Raised it to 50 (", ""), ("config/db.go:42", "f2"), ("); p99 fell from ", ""),
-     ("8.1 s", "f2")],
-    [("to ", ""), ("240 ms", "f2"), (".", ""), ("sup:2", "f2"), (" ", ""),
-     ("Not checked:", "f3"), ("sup:3", "f3"), (" whether the cache hides", "")],
-    [("the same limit under real load.", "")],
-]
-BEFORE_TAGS = [("1", "discovery order", "t1"), ("2", "vague allusion", "t2"),
-               ("3", "moral at the end", "t3")]
-AFTER_TAGS = [("1", "conclusion first", "f1"), ("2", "named, not alluded", "f2"),
-              ("3", "open end, stated", "f3")]
+CARDS = {
+    "hero": dict(
+        label="structure, not vocabulary",
+        before=[
+            [("I looked into the login timeouts. ", ""), ("First I checked the logs,", "t1")],
+            [("then the load balancer, then the connection pool.", "t1"), ("sup:1", "t1"),
+             (" As experienced", "t2")],
+            [("engineers often say, it's usually the simplest thing.", "t2"), ("sup:2", "t2"),
+             (" In the end,", "")],
+            [("it was the pool size. ", ""), ("Ultimately, this shows how small details", "t3")],
+            [("can have a big impact on reliability.", "t3"), ("sup:3", "t3")],
+        ],
+        after=[
+            [("Login times out because the DB pool caps at 10.", "f1"), ("sup:1", "f1")],
+            [("Raised it to 50 (", ""), ("config/db.go:42", "f2"), ("); p99 fell from ", ""),
+             ("8.1 s", "f2")],
+            [("to ", ""), ("240 ms", "f2"), (".", ""), ("sup:2", "f2"), (" ", ""),
+             ("Not checked:", "f3"), ("sup:3", "f3"), (" whether the cache hides", "")],
+            [("the same limit under real load.", "")],
+        ],
+        tells=["discovery order", "vague allusion", "moral at the end"],
+        fixes=["conclusion first", "named, not alluded", "open end, stated"],
+        aria="An AI-written answer with three structural tells highlighted, then the restructured version.",
+    ),
+    "pr": dict(
+        label="PR description",
+        before=[
+            [("## Summary", "t1"), ("sup:1", "t1")],
+            [("This PR ", ""), ("improves the reliability", "t2"), ("sup:2", "t2"),
+             (" of the notification system.", "")],
+            [("## Changes", "t1")],
+            [("- ", ""), ("Refactored the retry logic", "t2")],
+            [("- ", ""), ("Updated the queue configuration", "t2")],
+            [("## Impact", "t1")],
+            [("These changes make notifications more robust.", "t3"), ("sup:3", "t3")],
+        ],
+        after=[
+            [("Pushes were dropped when APNs returned ", "f1"), ("429", "f2"),
+             (": the retry", "f1")],
+            [("ran once, with no backoff.", "f1"), ("sup:1", "f1"),
+             (" Retries now back off", "")],
+            [("exponentially (", ""), ("max 5", "f2"), (", ", ""), ("retry.go", "f2"),
+             ("); failed jobs stay", "")],
+            [("queued for ", ""), ("24 h", "f2"), (".", ""), ("sup:2", "f2"), (" ", ""),
+             ("Not tested:", "f3"), ("sup:3", "f3"), (" Android/FCM.", "")],
+        ],
+        tells=["template symmetry", "no specifics", "moral at the end"],
+        fixes=["the cause first", "named, measured", "gap stated"],
+        aria="A templated PR description with its tells highlighted, then a rewrite that leads with the cause.",
+    ),
+    "docs": dict(
+        label="documentation",
+        before=[
+            [("Authentication is a crucial part of any modern", "t1")],
+            [("application. In this guide, we will walk through it.", "t1"), ("sup:1", "t1")],
+            [("First, we will install the dependencies. Then, we", "t2")],
+            [("will configure the provider. Finally, we will test.", "t2"), ("sup:2", "t2")],
+            [("By the end, you will have a solid understanding", "t3")],
+            [("of how authentication works.", "t3"), ("sup:3", "t3")],
+        ],
+        after=[
+            [("To add login,", "f1"), ("sup:1", "f1"), (" install ", ""), ("auth-kit", "f2"),
+             (", set ", ""), ("AUTH_ISSUER", "f2")],
+            [("and ", ""), ("AUTH_CLIENT_ID", "f2"), (", and call ", ""), ("requireUser()", "f2"),
+             ("sup:2", "f2"), (" in any", "")],
+            [("loader that needs a session. ", ""), ("The rest of this page", "f3")],
+            [("covers provider settings and failed callbacks.", "f3"), ("sup:3", "f3")],
+        ],
+        tells=["preamble", "narrated sequence", "promised takeaway"],
+        fixes=["answer first", "real names", "a map, not a promise"],
+        aria="A documentation intro with preamble and promised takeaway highlighted, then a rewrite that answers first.",
+    ),
+    "fiction": dict(
+        label="fiction",
+        before=[
+            [("Maria stood at the edge of the pier as the sun sank.", "")],
+            [("Her chest tightened with every wave,", "t1"), ("sup:1", "t1"),
+             (" the salt air", "t2")],
+            [("carrying memories of her father.", "t2"), ("sup:2", "t2"),
+             (" She had spent years", "")],
+            [("running from this place. But now, ", ""), ("she finally", "t3")],
+            [("understood: home was never a place. It was the", "t3")],
+            [("people who had loved her.", "t3"), ("sup:3", "t3")],
+        ],
+        after=[
+            [("The pier had been repainted, which ", ""), ("made her angry", "f1"),
+             ("sup:1", "f1")],
+            [("before she knew why. Her father had hated ", ""), ("that green", "f2"),
+             (".", "")],
+            [("She told the man at the ", ""), ("bait shop", "f2"),
+             ("sup:2", "f2"), (" she was only passing", "")],
+            [("through, and that was a lie too.", "")],
+            [("Two winters earlier,", "f3"), ("sup:3", "f3"), (" she had sold his boat to a", "")],
+            [("dentist from ", ""), ("Porto Alegre", "f2"), (".", "")],
+        ],
+        tells=["emotion only in the body", "generic imagery", "stated theme"],
+        fixes=["emotion named", "specific, not generic", "time jump, no lesson"],
+        aria="A short fiction passage with a stated theme highlighted, then a rewrite with named emotion, specifics and a time jump.",
+    ),
+}
 
 LINE = 30
 
@@ -78,25 +158,25 @@ def line(runs, x, y):
     return "".join(out)
 
 
-def tags(items, y):
+def tags(labels, prefix, y):
     out = []
-    for i, (n, label, cls) in enumerate(items):
-        x = 48 + i * 262
+    for i, label in enumerate(labels):
+        x, cls = 48 + i * 262, f"{prefix}{i + 1}"
         out.append(
             f'<circle cx="{x + 9}" cy="{y - 5}" r="10" class="{cls}-dot"/>'
-            f'<text x="{x + 9}" y="{y}" class="num" text-anchor="middle">{n}</text>'
+            f'<text x="{x + 9}" y="{y}" class="num" text-anchor="middle">{i + 1}</text>'
             f'<text x="{x + 28}" y="{y}" class="label">{esc(label)}</text>'
         )
     return "".join(out)
 
 
-def hero(t):
+def card(t, c):
     w = 880
     by = 104
-    tag1 = by + LINE * len(BEFORE) + 14
+    tag1 = by + LINE * len(c["before"]) + 14
     rule = tag1 + 34
     ay = rule + 82
-    tag2 = ay + LINE * len(AFTER) + 14
+    tag2 = ay + LINE * len(c["after"]) + 14
     h = tag2 + 44
     # Timeline in seconds: tells light up 1-2-3, the before text dims, then the
     # fixes light up 1-2-3.
@@ -113,9 +193,9 @@ def hero(t):
     .t1-dot,.t2-dot,.t3-dot{{fill:{t['tell']}}}
     .f1-dot,.f2-dot,.f3-dot{{fill:{t['fix']}}}
     .before{{opacity:.72}}
-    @keyframes ink{{from{{fill:{t['ink']}}}
-    @keyframes off{{from{{fill:{t['border']}}}
-    @keyframes dim{{from{{opacity:1}}
+    @keyframes ink{{from{{fill:{t['ink']}}}}}
+    @keyframes off{{from{{fill:{t['border']}}}}}
+    @keyframes dim{{from{{opacity:1}}}}
     .t1,.t1-dot{{animation:ink .35s ease-out .8s backwards}}
     .t2,.t2-dot{{animation:ink .35s ease-out 1.5s backwards}}
     .t3,.t3-dot{{animation:ink .35s ease-out 2.2s backwards}}
@@ -124,24 +204,24 @@ def hero(t):
     .f2,.f2-dot{{animation:ink .35s ease-out 4.1s backwards}}
     .f3,.f3-dot{{animation:ink .35s ease-out 4.7s backwards}}
     .t1-dot,.t2-dot,.t3-dot,.f1-dot,.f2-dot,.f3-dot{{animation-name:off}}
-    @media (prefers-reduced-motion: reduce){{*{{animation:none!important}}
+    @media (prefers-reduced-motion: reduce){{*{{animation:none!important}}}}
     """
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" role="img" '
-        f'aria-label="An AI-written answer with three structural tells highlighted, then the restructured version.">',
+        f'aria-label="{esc(c["aria"])}">',
         f"<style>{css}</style>",
         f'<rect class="card" x=".5" y=".5" width="{w - 1}" height="{h - 1}" rx="14"/>',
         '<text x="48" y="58" class="cap">BEFORE</text>',
-        f'<text x="{w - 48}" y="58" class="sub" text-anchor="end">structure, not vocabulary</text>',
+        f'<text x="{w - 48}" y="58" class="sub" text-anchor="end">{esc(c["label"])}</text>',
         '<g class="before">',
     ]
-    parts += [line(r, 48, by + i * LINE) for i, r in enumerate(BEFORE)]
+    parts += [line(r, 48, by + i * LINE) for i, r in enumerate(c["before"])]
     parts.append("</g>")
-    parts.append(tags(BEFORE_TAGS, tag1 + 22))
+    parts.append(tags(c["tells"], "t", tag1 + 22))
     parts.append(f'<line class="rule" x1="48" x2="{w - 48}" y1="{rule + 14}" y2="{rule + 14}"/>')
     parts.append(f'<text x="48" y="{rule + 52}" class="cap">AFTER</text>')
-    parts += [line(r, 48, ay + i * LINE) for i, r in enumerate(AFTER)]
-    parts.append(tags(AFTER_TAGS, tag2 + 22))
+    parts += [line(r, 48, ay + i * LINE) for i, r in enumerate(c["after"])]
+    parts.append(tags(c["fixes"], "f", tag2 + 22))
     parts.append("</svg>")
     return "\n".join(parts)
 
@@ -236,7 +316,8 @@ def social(t):
 if __name__ == "__main__":
     ASSETS.mkdir(exist_ok=True)
     for name, t in THEMES.items():
-        (ASSETS / f"hero-{name}.svg").write_text(hero(t))
+        for key, c in CARDS.items():
+            (ASSETS / f"{key}-{name}.svg").write_text(card(t, c))
         (ASSETS / f"map-{name}.svg").write_text(map_svg(t))
     (ASSETS / "social-preview.svg").write_text(social(THEMES["dark"]))
     print("wrote", sorted(p.name for p in ASSETS.glob("*.svg")))

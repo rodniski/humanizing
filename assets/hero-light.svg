@@ -12,9 +12,9 @@
     .t1-dot,.t2-dot,.t3-dot{fill:#b4442a}
     .f1-dot,.f2-dot,.f3-dot{fill:#2f6f5e}
     .before{opacity:.72}
-    @keyframes ink{from{fill:#1c1b19}
-    @keyframes off{from{fill:#e4e1da}
-    @keyframes dim{from{opacity:1}
+    @keyframes ink{from{fill:#1c1b19}}
+    @keyframes off{from{fill:#e4e1da}}
+    @keyframes dim{from{opacity:1}}
     .t1,.t1-dot{animation:ink .35s ease-out .8s backwards}
     .t2,.t2-dot{animation:ink .35s ease-out 1.5s backwards}
     .t3,.t3-dot{animation:ink .35s ease-out 2.2s backwards}
@@ -23,7 +23,7 @@
     .f2,.f2-dot{animation:ink .35s ease-out 4.1s backwards}
     .f3,.f3-dot{animation:ink .35s ease-out 4.7s backwards}
     .t1-dot,.t2-dot,.t3-dot,.f1-dot,.f2-dot,.f3-dot{animation-name:off}
-    @media (prefers-reduced-motion: reduce){*{animation:none!important}
+    @media (prefers-reduced-motion: reduce){*{animation:none!important}}
     </style>
 <rect class="card" x=".5" y=".5" width="879" height="561" rx="14"/>
 <text x="48" y="58" class="cap">BEFORE</text>

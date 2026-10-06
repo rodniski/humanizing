@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 622" width="880" height="622" role="img" aria-label="A templated PR description with its tells highlighted, then a rewrite that leads with the cause.">
+<style>
+    .card{fill:#151514;stroke:#2c2b28}
+    .mono{font:17px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#ecebe6}
+    .cap{font:600 12.5px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.12em;fill:#8f8b82}
+    .sub{font:14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#8f8b82}
+    .label{font:15.5px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ecebe6}
+    .num{font:700 12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#151514}
+    .rule{stroke:#2c2b28}
+    .t1,.t2,.t3{fill:#e2805f}
+    .f1,.f2,.f3{fill:#6fc2a8}
+    .t1-dot,.t2-dot,.t3-dot{fill:#e2805f}
+    .f1-dot,.f2-dot,.f3-dot{fill:#6fc2a8}
+    .before{opacity:.72}
+    @keyframes ink{from{fill:#ecebe6}}
+    @keyframes off{from{fill:#2c2b28}}
+    @keyframes dim{from{opacity:1}}
+    .t1,.t1-dot{animation:ink .35s ease-out .8s backwards}
+    .t2,.t2-dot{animation:ink .35s ease-out 1.5s backwards}
+    .t3,.t3-dot{animation:ink .35s ease-out 2.2s backwards}
+    .before{animation:dim .6s ease-out 3s backwards}
+    .f1,.f1-dot{animation:ink .35s ease-out 3.5s backwards}
+    .f2,.f2-dot{animation:ink .35s ease-out 4.1s backwards}
+    .f3,.f3-dot{animation:ink .35s ease-out 4.7s backwards}
+    .t1-dot,.t2-dot,.t3-dot,.f1-dot,.f2-dot,.f3-dot{animation-name:off}
+    @media (prefers-reduced-motion: reduce){*{animation:none!important}}
+    </style>
+<rect class="card" x=".5" y=".5" width="879" height="621" rx="14"/>
+<text x="48" y="58" class="cap">BEFORE</text>
+<text x="832" y="58" class="sub" text-anchor="end">PR description</text>
+<g class="before">
+<text x="48" y="104" class="mono"><tspan class="t1">## Summary</tspan><tspan class="t1" dy="-7" font-size="12">1</tspan></text>
+<text x="48" y="134" class="mono"><tspan>This PR </tspan><tspan class="t2">improves the reliability</tspan><tspan class="t2" dy="-7" font-size="12">2</tspan><tspan dy="7"> of the notification system.</tspan></text>
+<text x="48" y="164" class="mono"><tspan class="t1">## Changes</tspan></text>
+<text x="48" y="194" class="mono"><tspan>- </tspan><tspan class="t2">Refactored the retry logic</tspan></text>
+<text x="48" y="224" class="mono"><tspan>- </tspan><tspan class="t2">Updated the queue configuration</tspan></text>
+<text x="48" y="254" class="mono"><tspan class="t1">## Impact</tspan></text>
+<text x="48" y="284" class="mono"><tspan class="t3">These changes make notifications more robust.</tspan><tspan class="t3" dy="-7" font-size="12">3</tspan></text>
+</g>
+<circle cx="57" cy="345" r="10" class="t1-dot"/><text x="57" y="350" class="num" text-anchor="middle">1</text><text x="76" y="350" class="label">template symmetry</text><circle cx="319" cy="345" r="10" class="t2-dot"/><text x="319" y="350" class="num" text-anchor="middle">2</text><text x="338" y="350" class="label">no specifics</text><circle cx="581" cy="345" r="10" class="t3-dot"/><text x="581" y="350" class="num" text-anchor="middle">3</text><text x="600" y="350" class="label">moral at the end</text>
+<line class="rule" x1="48" x2="832" y1="376" y2="376"/>
+<text x="48" y="414" class="cap">AFTER</text>
+<text x="48" y="444" class="mono"><tspan class="f1">Pushes were dropped when APNs returned </tspan><tspan class="f2">429</tspan><tspan class="f1">: the retry</tspan></text>
+<text x="48" y="474" class="mono"><tspan class="f1">ran once, with no backoff.</tspan><tspan class="f1" dy="-7" font-size="12">1</tspan><tspan dy="7"> Retries now back off</tspan></text>
+<text x="48" y="504" class="mono"><tspan>exponentially (</tspan><tspan class="f2">max 5</tspan><tspan>, </tspan><tspan class="f2">retry.go</tspan><tspan>); failed jobs stay</tspan></text>
+<text x="48" y="534" class="mono"><tspan>queued for </tspan><tspan class="f2">24 h</tspan><tspan>.</tspan><tspan class="f2" dy="-7" font-size="12">2</tspan><tspan dy="7"> </tspan><tspan class="f3">Not tested:</tspan><tspan class="f3" dy="-7" font-size="12">3</tspan><tspan dy="7"> Android/FCM.</tspan></text>
+<circle cx="57" cy="595" r="10" class="f1-dot"/><text x="57" y="600" class="num" text-anchor="middle">1</text><text x="76" y="600" class="label">the cause first</text><circle cx="319" cy="595" r="10" class="f2-dot"/><text x="319" y="600" class="num" text-anchor="middle">2</text><text x="338" y="600" class="label">named, measured</text><circle cx="581" cy="595" r="10" class="f3-dot"/><text x="581" y="600" class="num" text-anchor="middle">3</text><text x="600" y="600" class="label">gap stated</text>
+</svg>

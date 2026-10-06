@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 592" width="880" height="592" role="img" aria-label="A documentation intro with preamble and promised takeaway highlighted, then a rewrite that answers first.">
+<style>
+    .card{fill:#fbfaf7;stroke:#e4e1da}
+    .mono{font:17px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#1c1b19}
+    .cap{font:600 12.5px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.12em;fill:#8a857c}
+    .sub{font:14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#8a857c}
+    .label{font:15.5px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#1c1b19}
+    .num{font:700 12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#fbfaf7}
+    .rule{stroke:#e4e1da}
+    .t1,.t2,.t3{fill:#b4442a}
+    .f1,.f2,.f3{fill:#2f6f5e}
+    .t1-dot,.t2-dot,.t3-dot{fill:#b4442a}
+    .f1-dot,.f2-dot,.f3-dot{fill:#2f6f5e}
+    .before{opacity:.72}
+    @keyframes ink{from{fill:#1c1b19}}
+    @keyframes off{from{fill:#e4e1da}}
+    @keyframes dim{from{opacity:1}}
+    .t1,.t1-dot{animation:ink .35s ease-out .8s backwards}
+    .t2,.t2-dot{animation:ink .35s ease-out 1.5s backwards}
+    .t3,.t3-dot{animation:ink .35s ease-out 2.2s backwards}
+    .before{animation:dim .6s ease-out 3s backwards}
+    .f1,.f1-dot{animation:ink .35s ease-out 3.5s backwards}
+    .f2,.f2-dot{animation:ink .35s ease-out 4.1s backwards}
+    .f3,.f3-dot{animation:ink .35s ease-out 4.7s backwards}
+    .t1-dot,.t2-dot,.t3-dot,.f1-dot,.f2-dot,.f3-dot{animation-name:off}
+    @media (prefers-reduced-motion: reduce){*{animation:none!important}}
+    </style>
+<rect class="card" x=".5" y=".5" width="879" height="591" rx="14"/>
+<text x="48" y="58" class="cap">BEFORE</text>
+<text x="832" y="58" class="sub" text-anchor="end">documentation</text>
+<g class="before">
+<text x="48" y="104" class="mono"><tspan class="t1">Authentication is a crucial part of any modern</tspan></text>
+<text x="48" y="134" class="mono"><tspan class="t1">application. In this guide, we will walk through it.</tspan><tspan class="t1" dy="-7" font-size="12">1</tspan></text>
+<text x="48" y="164" class="mono"><tspan class="t2">First, we will install the dependencies. Then, we</tspan></text>
+<text x="48" y="194" class="mono"><tspan class="t2">will configure the provider. Finally, we will test.</tspan><tspan class="t2" dy="-7" font-size="12">2</tspan></text>
+<text x="48" y="224" class="mono"><tspan class="t3">By the end, you will have a solid understanding</tspan></text>
+<text x="48" y="254" class="mono"><tspan class="t3">of how authentication works.</tspan><tspan class="t3" dy="-7" font-size="12">3</tspan></text>
+</g>
+<circle cx="57" cy="315" r="10" class="t1-dot"/><text x="57" y="320" class="num" text-anchor="middle">1</text><text x="76" y="320" class="label">preamble</text><circle cx="319" cy="315" r="10" class="t2-dot"/><text x="319" y="320" class="num" text-anchor="middle">2</text><text x="338" y="320" class="label">narrated sequence</text><circle cx="581" cy="315" r="10" class="t3-dot"/><text x="581" y="320" class="num" text-anchor="middle">3</text><text x="600" y="320" class="label">promised takeaway</text>
+<line class="rule" x1="48" x2="832" y1="346" y2="346"/>
+<text x="48" y="384" class="cap">AFTER</text>
+<text x="48" y="414" class="mono"><tspan class="f1">To add login,</tspan><tspan class="f1" dy="-7" font-size="12">1</tspan><tspan dy="7"> install </tspan><tspan class="f2">auth-kit</tspan><tspan>, set </tspan><tspan class="f2">AUTH_ISSUER</tspan></text>
+<text x="48" y="444" class="mono"><tspan>and </tspan><tspan class="f2">AUTH_CLIENT_ID</tspan><tspan>, and call </tspan><tspan class="f2">requireUser()</tspan><tspan class="f2" dy="-7" font-size="12">2</tspan><tspan dy="7"> in any</tspan></text>
+<text x="48" y="474" class="mono"><tspan>loader that needs a session. </tspan><tspan class="f3">The rest of this page</tspan></text>
+<text x="48" y="504" class="mono"><tspan class="f3">covers provider settings and failed callbacks.</tspan><tspan class="f3" dy="-7" font-size="12">3</tspan></text>
+<circle cx="57" cy="565" r="10" class="f1-dot"/><text x="57" y="570" class="num" text-anchor="middle">1</text><text x="76" y="570" class="label">answer first</text><circle cx="319" cy="565" r="10" class="f2-dot"/><text x="319" y="570" class="num" text-anchor="middle">2</text><text x="338" y="570" class="label">real names</text><circle cx="581" cy="565" r="10" class="f3-dot"/><text x="581" y="570" class="num" text-anchor="middle">3</text><text x="600" y="570" class="label">a map, not a promise</text>
+</svg>
